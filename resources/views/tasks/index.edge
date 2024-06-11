@@ -1,0 +1,21 @@
+@layout('layouts.app')
+
+@section('content')
+  <h1>Tasks</h1>
+  <a href="/tasks/create">Create Task</a>
+  @if(notification)
+    <p>{{ notification }}</p>
+  @endif
+  <ul>
+    @each(task in tasks)
+      <li>
+        {{ task.title }} - {{ task.description }}
+        <a href="/tasks/{{ task.id }}/edit">Edit</a>
+        <form action="/tasks/{{ task.id }}?_method=DELETE" method="POST">
+          {{ csrfField() }}
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    @endeach
+  </ul>
+@endsection
