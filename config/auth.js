@@ -90,5 +90,11 @@ module.exports = {
     scheme: 'api',
     uid: 'email',
     password: 'password'
-  }
+  },
+  authenticationViaBearerToken: false, // Disable bearer token authentication
+
+  authenticatorCredentialsFields: {
+    username: 'username', // Change this if you use a different field for username
+    password: 'password' // Change this if you use a different field for password
+  },
 }

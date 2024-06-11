@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My App</title>
+    {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/tasks">Tasks</a></li>
+        @if(auth.user)
+          <li><a href="/logout">Logout</a></li>
+        @else
+          <li><a href="/login">Login</a></li>
+        @endif
+      </ul>
+    </nav>
+
+    <main>
+      @!section('content')
+    </main>
+
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+    <script src="{{ mix('/js/app.js') }}"></script>
+
+  </body>
+</html>

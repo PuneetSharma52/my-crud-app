@@ -1,0 +1,20 @@
+@layout('layouts.app')
+
+@section('content')
+  <h1>Login</h1>
+  @if(loginError)
+    <p>{{ loginError }}</p>
+  @endif
+  <form action="/login" method="POST">
+    {{ csrfField() }}
+    <label>
+      Username:
+      <input type="text" name="username" required>
+    </label>
+    <label>
+      Password:
+      <input type="password" name="password" required>
+    </label>
+    <button type="submit">Login</button>
+  </form>
+@endsection

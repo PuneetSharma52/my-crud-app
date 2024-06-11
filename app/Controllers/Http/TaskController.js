@@ -3,11 +3,14 @@
 const Task = use('App/Models/Task')
 
 class TaskController {
-  async index({ view }) {
-    const tasks = await Task.all()
-    return view.render('tasks.index', { tasks: tasks.toJSON() })
+ async index({ view, auth }) {
+  if (!auth.user) {
+    return view.render('auth.login')
   }
 
+  const tasks = await Task.all()
+  return view.render('tasks.index', { tasks: tasks.toJSON() })
+}
   async create({ view }) {
     return view.render('tasks.create')
   }
